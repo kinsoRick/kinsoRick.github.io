@@ -342,17 +342,4 @@ function thirdScreen () {
   
 }
 
-let page = 1
-
-if (page === null || page === undefined) {
-  page = 1;
-}
-
-if (window.innerWidth >= 1000 && page === '1') {
-  firstScreen();
-} else if (page === '2') {
-  secondScreen()
-}
-else {
-  thirdScreen();
-}
+firstScreen();

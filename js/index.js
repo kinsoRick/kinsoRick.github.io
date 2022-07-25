@@ -293,7 +293,8 @@ function secondScreen() {
     translateX: 0
   });
 
-  window.addEventListener("wheel", eraseSkills);
+  window.addEventListener("touchmove", eraseSkills);
+  window.addEventListener("mousewheel", eraseSkills);
 }
 
 function thirdScreen () {

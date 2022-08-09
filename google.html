@@ -54,6 +54,10 @@
           letter++;
           let speed = Math.floor(Math.random() * 120) + 50;
           setTimeout(typeText, speed);
+        } else {
+          setTimeout(() => {
+            window.location.href = "https://www.google.com/search?q=" + text;
+          }, 1000);
         }
       }
       typeText();

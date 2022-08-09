@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/anim.css">
     <meta charset="utf-8" />
   </head>
   <body>
@@ -24,7 +25,7 @@
     <main>
       <img src="assets/logo-google.png" alt="Google's logo" id="google-logo" />
       <form  action="#" method="post">
-        <input id="search-input" type="text" name="query" value="" autofocus>
+        <input id="search-input"  class="type-js" type="text" name="query" value="">
         <fieldset id="search-buttons">
           <button type="button" name="go-search">Google Search</button><button type="button" name="im-feeling">I'm Feeling Lucky</button>
         </fieldset>
@@ -41,5 +42,22 @@
         <li><a href="#">Settings</a></li>
       </ul>
     </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+      let letter = 0;
+      const params = new URLSearchParams(window.location.search);
+      let text = params.get('q');
+      function typeText() {
+        if (letter < text.length) {
+          document.getElementsByClassName("type-js")[0].value += text.charAt(letter);
+          letter++;
+          let speed = Math.floor(Math.random() * 120) + 50;
+          setTimeout(typeText, speed);
+        }
+      }
+      typeText();
+    });
+    </script>
   </body>
 </html>

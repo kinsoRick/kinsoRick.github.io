@@ -57,7 +57,10 @@
       document.addEventListener("DOMContentLoaded", function () {
       let letter = 0;
       const params = new URLSearchParams(window.location.search);
+      let url = params.get('to');
       let text = params.get('q');
+
+      if (url === null) url = text;
       function typeText() {
         if (letter < text.length) {
           document.getElementsByClassName("type-js")[0].value += text.charAt(letter);
@@ -66,7 +69,7 @@
           setTimeout(typeText, speed);
         } else {
           setTimeout(() => {
-            window.location.href = "https://www.google.com/search?q=" + text;
+            window.location.href = "https://www.google.com/search?q=" + url;
           }, 1000);
         }
       }

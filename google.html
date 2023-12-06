@@ -57,6 +57,7 @@
       document.addEventListener("DOMContentLoaded", function () {
       let letter = 0;
       const params = new URLSearchParams(window.location.search);
+      let rawUrl = params.get('to_raw');
       let url = params.get('to');
       let text = params.get('q');
 
@@ -68,9 +69,15 @@
           let speed = Math.floor(Math.random() * 120) + 50;
           setTimeout(typeText, speed);
         } else {
-          setTimeout(() => {
-            window.location.href = "https://www.google.com/search?q=" + url;
-          }, 1000);
+          if (!!rawUrl) {
+            setTimeout(() => {
+              window.location.href = rawUrl;
+            }, 1000);
+          } else {
+            setTimeout(() => {
+              window.location.href = "https://www.google.com/search?q=" + url;
+            }, 1000);
+          }
         }
       }
       typeText();
